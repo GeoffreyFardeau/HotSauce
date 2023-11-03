@@ -5,6 +5,7 @@ import errorHandler from '../middlewares/error.middleware.js';
 import sauceController from '../controllers/sauce.controller.js';
 import logger from '../helpers/logger.js';
 import noteController from '../controllers/note.controller.js';
+import authController from '../controllers/auth.controller.js';
 
 
 
@@ -24,6 +25,10 @@ router.route('/sauces')
 
 router.route('/notes')
 .post(controllerWrapper(noteController.addNote))
+
+
+router.route('/register')
+.post(controllerWrapper(authController.register));
 
 
 router.use((_, __, next) => {

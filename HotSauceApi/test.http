@@ -26,3 +26,15 @@ Content-Type: application/json
   "sauce_id": 7
 
 }
+
+
+### ? Post User
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "firstname": "Geoffrey",
+  "lastname": "Fardeau",
+  "email": "fardeau.geoffrey@gmail.com",
+  "password": "Password123!"
+}
