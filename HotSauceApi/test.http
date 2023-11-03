@@ -1,0 +1,28 @@
+
+### Post Cadex
+POST http://localhost:3000/sauces
+Content-Type: application/json
+
+{
+  "name": "SuperSauce",
+  "spicyness": 5,
+  "description": "Geoffrey",
+  "brand": "Geoffrey",
+  "country": "Geoffrey"
+
+}
+
+
+### Get 
+GET http://localhost:3000/sauces
+
+
+### Post Cadex
+POST http://localhost:3000/notes
+Content-Type: application/json
+
+{
+  "note": 5,
+  "sauce_id": 7
+
+}
