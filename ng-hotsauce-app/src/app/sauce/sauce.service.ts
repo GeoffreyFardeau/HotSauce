@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Sauces } from './sauces';
 import { Observable } from 'rxjs';
 import { catchError, of, tap } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,14 @@ getSauceById(id: number): Observable<Sauces> {
     tap((response) => this.log(response)),
     catchError((error) => this.handleError(error, undefined)
     ))}
+
+addSauce(sauce: Sauces): Observable<Sauces> {
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  return this.http.post<Sauces>('http://localhost:3000/sauces/',sauce, httpOptions).pipe(tap((response) => this.log (response)),
+  catchError((error) => this.handleError(error, null))
+  )}
 
 private handleError(error: Error, errorValue: any) {
   console.error(error)
