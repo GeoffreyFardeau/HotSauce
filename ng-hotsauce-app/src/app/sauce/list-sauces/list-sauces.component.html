@@ -3,13 +3,13 @@
 	
 
 	
-	<div *ngFor="let sauce of sauces" class="card card-image-cover h-48 m-8">
-	<img [src]="sauce.picture" alt="" class="w-200  object-contain h-48" />
+	<div *ngFor="let sauce of saucesList" class="card m-8 mb-15">
+	<img [src]="sauce.picture" alt="" class="" />
 	<div class="card-body">
 		<h2 class="card-header"> {{sauce.name}}</h2>
 		<p class="text-content2">{{sauce.description}}</p>
 		<div class="card-footer">
-			<button class="btn-secondary btn">Voir plus</button>
+			<button (click)="goToSauce(sauce)" class="btn-secondary btn">Voir plus</button>
 		</div>
 	</div>
 	</div>

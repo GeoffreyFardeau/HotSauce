@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SauceService } from '../sauce.service';
+import { Sauces } from '../sauces';
 
 @Component({
   selector: 'app-sauce-infos',
@@ -6,6 +9,22 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class SauceInfosComponent {
+export class SauceInfosComponent implements OnInit{
+  sauceList: Sauces[] | undefined
+  sauce: Sauces | undefined
+
+  constructor(private sauceService: SauceService, private route: ActivatedRoute, private router: Router) { }
+  ngOnInit(): void  {
+    const sauceId: string | null = this.route.snapshot.paramMap.get('id');
+    console.log(sauceId)
+
+    if(sauceId) {
+      this.sauceService.getSauceById(+sauceId).subscribe(sauce => this.sauce = sauce)
+
+    } else {
+      this.sauce = undefined
+    }
+   
+  }
 
 }

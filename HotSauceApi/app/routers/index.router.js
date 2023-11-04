@@ -7,9 +7,6 @@ import logger from '../helpers/logger.js';
 import noteController from '../controllers/note.controller.js';
 import authController from '../controllers/auth.controller.js';
 
-
-
-
 const router = Router();
 
 router.use((req, _, next) => {
@@ -18,18 +15,18 @@ router.use((req, _, next) => {
 });
 
 router.route('/sauces')
-.post(controllerWrapper(sauceController.addSauce))
-.get(controllerWrapper(sauceController.getAllSauces));
-
-
+  .post(controllerWrapper(sauceController.addSauce))
+  .get(controllerWrapper(sauceController.getAllSauces));
 
 router.route('/notes')
-.post(controllerWrapper(noteController.addNote))
-
+  .post(controllerWrapper(noteController.addNote));
 
 router.route('/register')
-.post(controllerWrapper(authController.register));
+  .post(controllerWrapper(authController.register));
 
+router.route('/sauces/:id')
+  .delete(controllerWrapper(sauceController.deleteSauce))
+  .get(controllerWrapper(sauceController.getOneSauce));
 
 router.use((_, __, next) => {
   next(new NotFoundError('404 not found'));

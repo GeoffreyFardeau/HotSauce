@@ -4,17 +4,21 @@ POST http://localhost:3000/sauces
 Content-Type: application/json
 
 {
-  "name": "SuperSauce",
+  "name": "Reaper sling blade sauce",
   "spicyness": 5,
-  "description": "Geoffrey",
-  "brand": "Geoffrey",
-  "country": "Geoffrey"
+  "description": "Cajohns",
+  "brand": "Cajohns",
+  "country": "Finlande",
+  "picture": "https://www.sauce-piquante.fr/266-large_default/sauce-reaper-sling-blade.jpg"
 
 }
 
 
 ### Get 
-GET http://localhost:3000/sauces
+GET http://localhost:3000/sauce/2
+
+### Get 
+DELETE http://localhost:3000/sauces/2
 
 
 ### Post Cadex
@@ -23,7 +27,8 @@ Content-Type: application/json
 
 {
   "note": 5,
-  "sauce_id": 7
+  "sauce_id": 7,
+  "user_id": 2
 
 }
 

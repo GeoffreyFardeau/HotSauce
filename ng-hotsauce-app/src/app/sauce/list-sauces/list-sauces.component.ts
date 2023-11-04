@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import axios from 'axios';
+import  {Sauces} from '../sauces'
+import { Router } from '@angular/router';
+import { SauceService } from '../sauce.service';
 
 @Component({
   selector: 'app-list-sauces',
@@ -8,13 +10,18 @@ import axios from 'axios';
   ]
 })
 export class ListSaucesComponent implements OnInit {
-sauces: any[] = [];
+saucesList: Sauces[] | undefined
 
-  constructor() {}
+  constructor(private sauceService: SauceService,
+              private router: Router) {}
 ngOnInit(){
-   axios.get('http://localhost:3000/sauces').then((response) => {
-    this.sauces = response.data;
-    console.log(this.sauces);
-  })
+ this.sauceService.getAllSauces().subscribe(sauceList => this.saucesList = sauceList)
+ console.log(this.saucesList)
+ 
+}
+
+
+goToSauce(sauce: Sauces){
+ this.router.navigate(['/sauces', sauce.id])
 }}
 

@@ -11,8 +11,6 @@ import { list } from 'postcss';
 @NgModule({
   declarations: [
     AppComponent,
-    ListSaucesComponent,
-    SauceInfosComponent
   ],
   imports: [
     BrowserModule,
