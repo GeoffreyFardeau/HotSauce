@@ -27,4 +27,10 @@ export class SauceInfosComponent implements OnInit{
    
   }
 
+deleteSauce(id: any){
+  this.sauceService.deleteSauce(id).subscribe((response) => this.router.navigate(['/sauces']));
+  
+
+}
+
 }

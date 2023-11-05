@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios';
 import { Sauces } from './sauces';
 import { Observable } from 'rxjs';
 import { catchError, of, tap } from 'rxjs';
@@ -25,6 +24,14 @@ getSauceById(id: number): Observable<Sauces> {
     tap((response) => this.log(response)),
     catchError((error) => this.handleError(error, undefined)
     ))}
+
+
+    deleteSauce(id: number): Observable<Sauces> {
+      return this.http.delete<Sauces>(`http://localhost:3000/sauces/${id}`).pipe(
+        tap((response) => this.log(response)),
+        catchError((error) => this.handleError(error, undefined)
+        ))}
+  
 
 addSauce(sauce: Sauces): Observable<Sauces> {
   const httpOptions = {

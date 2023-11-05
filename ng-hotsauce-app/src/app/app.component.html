@@ -4,8 +4,10 @@
 	</div>
 	<div class="navbar-end">
 		<a href="/sauces" class="navbar-item">Home</a>
-		<a href="/login"class="navbar-item">Se connecter</a>
-		<a class="navbar-item">Contact</a>
+		<a  *ngIf="token" class="navbar-item">{{token.firstname}}</a>
+		<a  *ngIf="!token" href="/login" class="navbar-item">Se connecter</a>
+		<a  *ngIf="token" (click)="logout()" class="navbar-item">Se déconnecter</a>
+		
 	</div>
 </div>
 
