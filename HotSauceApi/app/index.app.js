@@ -1,10 +1,13 @@
 import express from 'express';
-import router from './routers/index.router.js';
 import passport from 'passport';
-import passportConfig from './middlewares/passportConfig.js';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import router from './routers/index.router.js';
+import passportConfig from './middlewares/passportConfig.js';
+
 passportConfig(passport);
 const app = express();
+app.use(cors());
 app.use(cookieParser());
 // middleaware pour récupérer un body au format JSON
 app.use(express.json());

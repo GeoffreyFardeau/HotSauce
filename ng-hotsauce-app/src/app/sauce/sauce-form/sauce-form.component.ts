@@ -19,7 +19,7 @@ sauce: Sauces
   }
 
 onSubmit(){
-this.sauceService.addSauce(this.sauce).subscribe((sauce:Sauces) => this.router.navigate(['/sauces', this.sauce.id]));
+this.sauceService.addSauce(this.sauce).subscribe((response) => this.router.navigate(['/sauces', response.id]));
 
 
 }
