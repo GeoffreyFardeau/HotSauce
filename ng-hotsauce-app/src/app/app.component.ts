@@ -14,9 +14,11 @@ export class AppComponent implements OnInit{
 
 
 
-
   constructor(private loginService: LoginService,
     private router: Router) { }
+
+
+
   ngOnInit(){
   const token = this.loginService.getToken()
   console.log("ici",token)
@@ -28,7 +30,6 @@ this.token = token
   logout() {
     this.loginService.logout()
     this.router.navigate(['/sauces'])
-    location.reload();
   }
 
   

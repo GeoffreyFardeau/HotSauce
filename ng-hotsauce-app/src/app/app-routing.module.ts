@@ -4,6 +4,7 @@ import { ListSaucesComponent } from './sauce/list-sauces/list-sauces.component';
 import { SauceInfosComponent } from './sauce/sauce-infos/sauce-infos.component';
 import { LoginComponent } from './login/login.component';
 import { SauceFormComponent } from './sauce/sauce-form/sauce-form.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path : 'sauces', component: ListSaucesComponent },
@@ -13,7 +14,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), FormsModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

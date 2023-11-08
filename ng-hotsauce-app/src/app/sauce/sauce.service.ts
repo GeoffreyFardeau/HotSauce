@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { Sauces } from './sauces';
 import { Observable } from 'rxjs';
 import { catchError, of, tap } from 'rxjs';
@@ -47,6 +47,18 @@ addSauce(sauce: Sauces): Observable<Sauces> {
   catchError((error) => this.handleError(error, null))
 
   )}
+
+  searchSauceList(term: string): Observable<Sauces[]> {
+    if (term.length <=1) {
+      return of([]);
+      
+    }
+    return this.http.get<Sauces>(`http://localhost:3000/searchSauce/?name=${term}`).pipe(
+      tap((response) => this.log (response)),
+      catchError((error) => this.handleError(error, [])
+      )
+    )
+  }
 
 private handleError(error: Error, errorValue: any) {
   console.error(error)

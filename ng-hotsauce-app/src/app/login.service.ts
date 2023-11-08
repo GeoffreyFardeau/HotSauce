@@ -13,6 +13,11 @@ import { jwtDecode } from "jwt-decode";
 })
 export class LoginService {
 
+  isLoggedIn = false;
+
+
+  
+
 
 
   constructor(private http: HttpClient,
@@ -30,9 +35,11 @@ export class LoginService {
     }) }
    
     return this.http.post<User>('http://localhost:3000/login/',JSON.stringify(user), httpOptions).pipe(tap((response) => this.log (response)),
-    catchError((error) => this.handleError(error, null))
+    catchError((error) => this.handleError(error, null)), tap((response) => this.isLoggedIn = true),
   
-    )}
+    )
+
+  }
 
  setCookie (token: any) {
   this.cookieService.set('token', token);
@@ -50,6 +57,7 @@ getToken() {
 
 logout() {
   this.cookieService.delete('token');
+  this.isLoggedIn = false
   
 }
 
@@ -64,9 +72,15 @@ private handleError(error: Error, errorValue: any) {
 
 private log(response: any){
   console.table(response)
-  }}
+  }
 
 
+
+  setLoggedIn(): void {
+    this.isLoggedIn = true;
+  }
+  
+}
 
 
 

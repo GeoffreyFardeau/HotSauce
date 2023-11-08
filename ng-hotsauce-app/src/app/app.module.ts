@@ -9,11 +9,14 @@ import { SauceModule } from './sauce/sauce.module';
 import { list } from 'postcss';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { SearchSauceComponent } from './sauce/search-sauce/search-sauce.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    SearchSauceComponent
   ],
   imports: [
     BrowserModule,

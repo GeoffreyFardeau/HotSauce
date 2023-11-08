@@ -1,27 +1,36 @@
-# NgHotsauceApp
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+| Table/Entité      | Action                                      | Méthode HTTP | Route                  |
+| ------------------| ------------------------------------------- | ------------ | ---------------------- |
+| **USER**          | <span style="color:red">C</span>reate       | POST         | `/api/user`            |
+|                   | <span style="color:red">R</span>ead(getOne) | GET          | `/api/user/:id`        |
+|                   | <span style="color:red">U</span>pdate       | PATCH        | `/api/user/:id`        |
+|                   | <span style="color:red">D</span>elete       | DELETE       | `/api/user/:id`        |
+|                   | Liste(getAll)                               | GET          | `/api/users`           |
+|-------------------|---------------------------------------------|---------------|-----------------------|
+| **EVENT**         | <span style="color:red">C</span>reate       | POST         | `/api/event`           |
+|                   | <span style="color:red">R</span>ead(getOne) | GET          | `/api/event/:id`       |
+|                   | <span style="color:red">U</span>pdate       | PATCH        | `/api/event/:id`       |
+|                   | <span style="color:red">D</span>elete       | DELETE       | `/api/event/:id`       |
+|-------------------|---------------------------------------------|--------------|------------------------|
+| **EVENTDATES**    | <span style="color:red">C</span>reate       | POST         | `/api/eventdate`       |
+|                   | <span style="color:red">R</span>ead(getOne) | GET          | `/api/eventdate/:id`   |
+|                   | <span style="color:red">U</span>pdate       | PATCH        | `/api/eventdate/:id`   |
+|                   | <span style="color:red">D</span>elete       | DELETE       | `/api/eventdate/:id`   |
+|                   | Liste(getAll)                               | GET          | `/api/eventsdates`     |
+|-------------------|---------------------------------------------|--------------|------------------------|
+| **DATE**          | <span style="color:red">C</span>reate       | POST         | `/api/date`            |
+|                   | <span style="color:red">R</span>ead(getOne) | GET          | `/api/date/:id`        |
+|                   | <span style="color:red">U</span>pdate       | PATCH        | `/api/date/:id`        |
+|                   | <span style="color:red">D</span>elete       | DELETE       | `/api/date/:id`        |
+|                   | Liste(getAll)                               | GET          | `/api/dates`           |
+|-------------------|---------------------------------------------|--------------|------------------------|
+| **USERCHOICE**    | <span style="color:red">C</span>reate       | POST         | `/api/choice`          |
+|                   | <span style="color:red">R</span>ead(getOne) | GET          | `/api/choice/:id`      |
+|                   | <span style="color:red">U</span>pdate       | PATCH        | `/api/choice/:id`      |
+|                   | <span style="color:red">D</span>elete       | DELETE       | `/api/choice/:id`      |
+|                   | Liste(getAll)                               | GET          | `/api/choices`         |
+|-------------------|---------------------------------------------|--------------|------------------------|
+| **USER_HAS_EVENT**| <span style="color:red">C</span>reate       | POST         | `/api/verifyAccess`    |
+|                   | <span style="color:red">R</span>ead(getOne) | POST         | `/api/verifyPassword`  |
+|                   | <span style="color:red">R</span>ead(getOne) | GET          | `/api/eventUser/:id`   |
+|                   | Liste(getAll)                               | GET          | `/api/eventsUser`      |
+|-------------------|---------------------------------------------|--------------|------------------------|
