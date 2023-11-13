@@ -1,6 +1,6 @@
 <div>
 <input #searchbox (keyup)="search(searchbox.value)" class="input-rounded input m-8 place-content-center" placeholder="Rechercher une sauce" />
-<div class="card">
+<div class="card absolute">
     <a *ngFor="let sauce of sauces$ | async"
     (click)="goToDetail(sauce)"> {{sauce.name}}</a>
 </div>

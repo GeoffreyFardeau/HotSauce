@@ -7,8 +7,7 @@
 		<svg
 		  fill="#000000" height="40px" width="40px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 viewBox="0 0 196.223 196.223" xml:space="preserve">
-		>
-		<path d="M24.424,161.526c-6.201,4.333-9.038,13.582-6.606,21.726c2.426,8.12,9.365,12.969,18.562,12.971c0.002,0,0.003,0,0.003,0
+		<path fill="#E32227" d="M24.424,161.526c-6.201,4.333-9.038,13.582-6.606,21.726c2.426,8.12,9.365,12.969,18.562,12.971c0.002,0,0.003,0,0.003,0
 		c1.021,0,2.085-0.061,3.162-0.179c34.288-3.762,66.186-17.956,92.246-41.047c24.197-21.44,40.785-48.461,46.713-76.094
 		c2.908-13.638-2.508-25.729-15.25-34.067c-1.13-0.803-6.091-4.151-13.232-6.646l21.485-25.901
 		c2.645-3.188,2.204-7.916-0.984-10.561c-3.186-2.643-7.915-2.205-10.561,0.984l-26.755,32.254
@@ -27,32 +26,32 @@
 		<nav aria-label="Global" class="hidden md:block">
 		  <ul class="flex items-center gap-6 text-sm">
 			<li>
-			  <a class="text-gray-500 transition hover:text-gray-500/75" href="/">
+			  <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/sauces">
 				Sauces
 			  </a>
 			</li>
   
 			<li>
-			  <a class="text-gray-500 transition hover:text-gray-500/75" href="/">
+			  <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/sauce-form">
 				Ajouter une sauce
 			  </a>
 			</li>
 
 		  </ul>
 		</nav>
-		<app-search-sauce></app-search-sauce>
+		<app-search-sauce class="z-50"></app-search-sauce>
 		<div class="flex items-center gap-4">
 		  <div class="sm:flex sm:gap-4">
 			<a
 			  class="block rounded-md bg-red-700  px-5 py-2.5 text-sm font-medium text-white transition hover:bg-grey-700"
-			  href="/login"
+			  routerLink="/login"
 			>
 			  Se connecter
 			</a>
   
 			<a
 			  class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-red-700 transition hover:text-black-600/75 sm:block"
-			  href="/"
+			  routerLink="/"
 			>
 			  S'enregistrer
 			</a>
