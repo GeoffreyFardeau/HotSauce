@@ -2,11 +2,18 @@ import express from 'express';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import session from 'express-session';
 import router from './routers/index.router.js';
 import passportConfig from './middlewares/passportConfig.js';
 
 passportConfig(passport);
 const app = express();
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true },
+}));
 app.use(cors());
 app.use(cookieParser());
 // middleaware pour récupérer un body au format JSON

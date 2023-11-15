@@ -6,6 +6,8 @@ export class Sauces {
     brand: string;
     country: string;
     picture: string;
+    comments: Comment[];
+comment_text: any;
 
   }
 

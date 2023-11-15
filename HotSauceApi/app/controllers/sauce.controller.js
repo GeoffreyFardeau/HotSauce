@@ -4,9 +4,7 @@ export default {
 
   async getAllSauces(req, res) {
     const sauces = await datamapper.getAllSauces();
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    console.log(sauces);
     res.json(sauces);
   },
 
@@ -22,7 +20,6 @@ export default {
     const sauce = await datamapper.addSauce(req.body);
     res.setHeader('Access-Control-Allow-Origin', '*');
 
-
     res.json(sauce);
   },
   async deleteSauce(req, res) {
@@ -32,6 +29,11 @@ export default {
 
   async modifySauce(req, res) {
     const sauce = await datamapper.modifySauce(req.params.id, req.body);
+    res.json(sauce);
+  },
+
+  async searchSauceByName(req, res) {
+    const sauce = await datamapper.searchSauceByName(req.query.name);
     res.json(sauce);
   },
 

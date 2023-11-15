@@ -3,7 +3,7 @@ import { Sauces } from './sauces';
 import { Observable } from 'rxjs';
 import { catchError, of, tap } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { Comment } from '../comments';
 @Injectable({
   providedIn: 'root'
 })
@@ -42,11 +42,16 @@ addSauce(sauce: Sauces): Observable<Sauces> {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
   }) }
+
  
   return this.http.post<Sauces>('http://localhost:3000/sauces/',JSON.stringify(sauce), httpOptions).pipe(tap((response) => this.log (response)),
   catchError((error) => this.handleError(error, null))
 
   )}
+
+  addComment(comment: any): Observable<any> {
+    return this.http.post<Comment>('http://localhost:3000/comment/',(comment)).pipe(tap((response) => this.log (response)),)
+  }
 
   searchSauceList(term: string): Observable<Sauces[]> {
     if (term.length <=1) {

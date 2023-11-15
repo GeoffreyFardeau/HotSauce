@@ -1,10 +1,11 @@
--- SQLBook: Code
 BEGIN;
 
-DROP TABLE IF EXISTS "user", SAUCE, NOTE;
--- table USER
+-- Supprimer les tables "SAUCE_COMMENT", "SAUCE", et "user" avec CASCADE
+DROP TABLE IF EXISTS SAUCE_COMMENT, SAUCE, "user" CASCADE;
+
+-- Recréer la table "user"
 CREATE TABLE "user" (
-    id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     firstname TEXT NOT NULL,
     lastname TEXT NOT NULL,
     email TEXT NOT NULL,
@@ -14,28 +15,26 @@ CREATE TABLE "user" (
     gender TEXT,
     profile_picture TEXT,
     profile_desc TEXT
-    );
+);
 
-    CREATE TABLE SAUCE (
-    id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    note_id INT,
+-- Recréer la table "SAUCE"
+CREATE TABLE SAUCE (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     spicyness INTEGER NOT NULL,
     name TEXT NOT NULL,
     description TEXT NOT NULL,
     country TEXT,
     brand TEXT,
     picture TEXT
-        );
+);
 
-
--- table USERCHOICE 
-CREATE TABLE NOTE (
-    id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    note INTEGER NOT NULL,
+-- Recréer la table "SAUCE_COMMENT"
+CREATE TABLE SAUCE_COMMENT (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    sauce_id INT REFERENCES SAUCE(id) ON DELETE CASCADE,
     user_id INT REFERENCES "user"(id),
-    sauce_id INT REFERENCES SAUCE(id)
-    );
-
-
+    comment_text TEXT NOT NULL,
+    created_at timestamp DEFAULT CURRENT_TIMESTAMP
+);
 
 COMMIT;

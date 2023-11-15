@@ -13,9 +13,21 @@ Content-Type: application/json
 
 }
 
+### Post Cadex
+POST http://localhost:3000/comment/
+Content-Type: application/json
+
+{
+  "comment_text": "ziziziziz",
+  "user_id": 2,
+  "sauce_id": 1
+
+  
+}
+
 
 ### Get 
-GET http://localhost:3000/sauce/2
+GET http://localhost:3000/sauces/1
 
 ### Get 
 DELETE http://localhost:3000/sauces/2

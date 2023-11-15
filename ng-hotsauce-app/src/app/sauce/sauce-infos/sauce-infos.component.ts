@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SauceService } from '../sauce.service';
 import { Sauces } from '../sauces';
+import { LoginService } from 'src/app/login.service';
+
 
 @Component({
   selector: 'app-sauce-infos',
@@ -11,11 +13,15 @@ import { Sauces } from '../sauces';
 })
 export class SauceInfosComponent implements OnInit{
   sauceList: Sauces[] | undefined
-  sauce: Sauces | undefined
+  sauce: any
+  sauceComments = [];
+  newCommentText: string ='';
+
+
 
   finalNoteArray: number[] = [];
 
-  constructor(private sauceService: SauceService, private route: ActivatedRoute, private router: Router) { 
+  constructor(private sauceService: SauceService, private route: ActivatedRoute, private router: Router, private loginService: LoginService) { 
   
   }
   ngOnInit(): void  {
@@ -45,5 +51,23 @@ deleteSauce(id: any){
   
 
 }
+comSubmit(id: any){
+const decodedToken = this.loginService.getToken()
+if(decodedToken && this.sauce){
+  const newComment = {
+    comment_text: this.newCommentText,
+    sauce_id: id,
+    user_id: decodedToken.id
+  }
 
+  this.sauceService.addComment(newComment).subscribe((response) =>  {
+    this.sauce.comments.push(response)
+    this.newCommentText = ''
+  });
+  console.log(newComment)
 }
+
+
+
+
+}}

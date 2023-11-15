@@ -51,13 +51,16 @@ export class LoginService {
 };
 
 getToken() {
+  interface CustomJwtPayload extends jwt.JwtPayload {
+    id: string;
+  }
  const token = this.cookieService.get('token');
 
  if(!token){
   return null
 
  }
- const decoded = jwtDecode(token)
+ const decoded = jwtDecode(token) as CustomJwtPayload
 return decoded
 
 }
