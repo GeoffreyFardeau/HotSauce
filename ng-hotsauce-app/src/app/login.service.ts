@@ -5,6 +5,7 @@ import { Observable, catchError, of, tap } from 'rxjs';
 import * as jwt from 'jsonwebtoken';
 import {CookieService} from 'ngx-cookie-service';
 import { jwtDecode } from "jwt-decode";
+import { UserService } from './login/user.service';
 
 
 
@@ -21,7 +22,7 @@ export class LoginService {
 
 
   constructor(private http: HttpClient,
-    private cookieService: CookieService) { }
+    private cookieService: CookieService, private userService : UserService) { }
 
 
   loginMember(user: User): Observable<User> {
@@ -35,7 +36,7 @@ export class LoginService {
     }) }
    
     return this.http.post<User>('http://localhost:3000/login/',JSON.stringify(user), httpOptions).pipe(tap((response) => this.log (response)),
-    catchError((error) => this.handleError(error, null)), tap((response) => this.isLoggedIn = true),
+    catchError((error) => this.handleError(error, null)), tap((response) => this.userService.setUserState(true, response.firstname)),
   
     )
 
@@ -45,14 +46,20 @@ export class LoginService {
   this.cookieService.set('token', token);
 
  const decoded = jwtDecode(token)
+ console.log(decoded)
  console.log("coucou",decoded)
 };
 
 getToken() {
  const token = this.cookieService.get('token');
 
-  const decoded = jwtDecode(token)
-  return decoded
+ if(!token){
+  return null
+
+ }
+ const decoded = jwtDecode(token)
+return decoded
+
 }
 
 logout() {

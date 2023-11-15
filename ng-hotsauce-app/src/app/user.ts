@@ -1,4 +1,7 @@
 export class User {
+    getUserState() {
+      throw new Error('Method not implemented.');
+    }
     id: number;
     firstname: string;
     lastname: string;

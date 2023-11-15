@@ -10,30 +10,24 @@ import { SauceService } from '../sauce.service';
   ]
 })
 export class ListSaucesComponent implements OnInit {
-saucesList: Sauces[] | undefined
+saucesList: Sauces[] =  []
 finalNoteArray: number[] = [];
 
   constructor(private sauceService: SauceService,
               private router: Router) {}
 ngOnInit(){
  this.sauceService.getAllSauces().subscribe(sauceList => {this.saucesList = sauceList
-  this.boucleSauce(sauceList)})
+ })
  console.log(this.saucesList)
 
  
 }
-boucleSauce(saucesList: Sauces[] | undefined) {
-    if (saucesList) {
-        saucesList.forEach(sauce => {
-            console.log(sauce.spicyness);
 
-            for (let i = 0; i < sauce.spicyness; i++) {
-                this.finalNoteArray.push(i + 1);
-                console.log(this.finalNoteArray);
-            }
-        });
-    }
-}
+
+getSpicesForSauce(index: number): number[] {
+    const spicyness = this.saucesList[index].spicyness;
+    return Array.from({ length: spicyness }, (_, i) => i + 1);
+  }
 
 goToSauce(sauce: Sauces){
  this.router.navigate(['/sauces', sauce.id])

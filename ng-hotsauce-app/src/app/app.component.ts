@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
-
-
+import { UserService } from './login/user.service';
+import { Observable, map } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit{
+  isUserLoggedIn$: Observable<boolean>;
+  firstName$: Observable<string>;
 
   token: any
 
@@ -15,20 +18,21 @@ export class AppComponent implements OnInit{
 
 
   constructor(private loginService: LoginService,
-    private router: Router) { }
-
-
+    private router: Router, private userService: UserService) { }
+    cookieService = inject(CookieService);
 
   ngOnInit(){
-  const token = this.loginService.getToken()
-  console.log("ici",token)
-this.token = token
+    this.token = this.loginService.getToken()
+    this.isUserLoggedIn$ = this.userService.getUserState().pipe(map(userState => userState.isLoggedIn));
+    this.firstName$ = this.userService.getUserState().pipe(map(userState => userState.firstName));
+ 
+    console.log("zouzouzoué",this.token)
    
   }
-  title = 'Hot Sauce !';
 
   logout() {
-    this.loginService.logout()
+    this.cookieService.deleteAll()
+    this.userService.setUserState(false, '')
     this.router.navigate(['/sauces'])
   }
 
